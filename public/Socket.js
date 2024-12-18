@@ -30,6 +30,7 @@ socket.on('connection', (data) => {
 let gameAssetsData = null;
 socket.on('gameAssets', (data) => {
   gameAssetsData = data;
+  // console.log(gameAssetsData)
 });
 
 // 서버에 'event'라는 이벤트를 발생시키는 함수
