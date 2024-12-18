@@ -17,7 +17,7 @@ const registerHandler = (io) => {
     handleConnection(socket, userUUID); 
     // 커넥션 처리: 클라이언트가 연결될 때마다 추가적인 처리(예: 초기화, 알림 등)를 하는 함수 호출.
 
-    const gameAssets = getGameAssets();
+    const gameAssets = getGameAssets(); // assets 파일을 public으로 보냄
     socket.emit('gameAssets', gameAssets);
 
     // 모든 서비스 이벤트 처리
