@@ -18,7 +18,7 @@ class Score {
 
   // 게임이 진행되면서 점수를 업데이트하는 메서드
   update(deltaTime) {
-    this.stageChange = true;
+    this.stageChange = true; 
     const stages = gameAssetsData.stages.data
     // const scores = stages[this.stage].scorePerSecond
     // deltaTime은 프레임 간의 시간 차이, 이를 이용해 점수를 점진적으로 증가시킴
