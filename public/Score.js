@@ -28,7 +28,8 @@ class Score {
     if (Math.floor(this.score) === stages[this.stage].score && this.stageChange) {
       console.log(this.stage)
       this.stageChange = false; // 스테이지 전환은 한 번만 이루어지도록 stageChange를 false로 설정
-      sendEvent(11, { currentStage: stages[this.stage].id, targetStage: stages[this.stage + 1].id}); // 스테이지 전환 이벤트를 보냄
+      sendEvent(11, { currentStage: stages[this.stage].id,
+        targetStage: stages[this.stage + 1].id}); // 스테이지 전환 이벤트를 보냄
     this.stage += 1;
     }
   }
