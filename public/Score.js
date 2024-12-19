@@ -30,14 +30,14 @@ class Score {
       this.stageChange = false; // 스테이지 전환은 한 번만 이루어지도록 stageChange를 false로 설정
       sendEvent(11, { currentStage: stages[this.stage].id,
         targetStage: stages[this.stage + 1].id}); // 스테이지 전환 이벤트를 보냄
-    this.stage += 1;
+    this.stage += 1; // this.stage ++ 와 같음
     }
   }
 
   // 아이템 획득 시 점수 변화가 있을 경우 사용될 메서드 (현재는 점수 변화가 없지만 나중에 확장 가능)
   getItem(itemId) {
     // 아이템 획득 시 점수 변화 (현재는 0만큼 변화하도록 설정됨)
-    this.score += 0;
+    this.score += 5;
   }
 
   // 점수를 초기화하는 메서드
@@ -68,6 +68,10 @@ class Score {
     const fontSize = 20 * this.scaleRatio; // 폰트 크기를 스케일에 맞게 설정
     this.ctx.font = `${fontSize}px serif`; // 폰트 설정
     this.ctx.fillStyle = '#525250'; // 텍스트 색상 설정
+
+    // 스테이지 표시(왼쪽)
+    const stageX = 25* this.scaleRatio;
+    this.ctx.fillText(`STAGE ${this.stage}`, stageX, y) //stage 표시
 
     // 점수와 고득점의 x 위치를 계산
     const scoreX = this.canvas.width - 75 * this.scaleRatio; // 점수의 x 위치
