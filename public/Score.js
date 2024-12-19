@@ -18,14 +18,14 @@ class Score {
 
   // 게임이 진행되면서 점수를 업데이트하는 메서드
   update(deltaTime) {
-    this.stageChange = true; 
+    this.stageChange = true; //
     const stages = gameAssetsData.stages.data
     // const scores = stages[this.stage].scorePerSecond
     // deltaTime은 프레임 간의 시간 차이, 이를 이용해 점수를 점진적으로 증가시킴
     this.score += deltaTime * 0.001 * stages[this.stage].scorePerSecond; // 점수는 deltaTime의 0.001배만큼 증가
 
     // 점수가 도달하고, stageChange가 true일 때 스테이지 전환 이벤트 발생
-    if (Math.floor(this.score) === stages[this.stage].score && this.stageChange) {
+    if (Math.floor(this.score) >= stages[this.stage].score && this.stageChange) {
       console.log(this.stage)
       this.stageChange = false; // 스테이지 전환은 한 번만 이루어지도록 stageChange를 false로 설정
       sendEvent(11, { currentStage: stages[this.stage].id,
@@ -34,10 +34,12 @@ class Score {
     }
   }
 
-  // 아이템 획득 시 점수 변화가 있을 경우 사용될 메서드 (현재는 점수 변화가 없지만 나중에 확장 가능)
+  // 아이템 획득 시 점수 변화가 있을 경우 사용될 메서드
   getItem(itemId) {
-    // 아이템 획득 시 점수 변화 (현재는 0만큼 변화하도록 설정됨)
-    this.score += 5;
+    const itemData = gameAssetsData.items.data.find((item) => item.id === itemId);
+    // 아이템 획득 시 점수 변화
+    this.score += itemData.score
+    console.log(itemData)
   }
 
   // 점수를 초기화하는 메서드

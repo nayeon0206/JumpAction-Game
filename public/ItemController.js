@@ -34,9 +34,9 @@ class ItemController {
     }
 
     // 새로운 아이템을 생성하는 함수
-    createItem() {
-        // 랜덤하게 아이템 이미지 선택
-        const index = this.getRandomNumber(0, this.itemImages.length - 1);
+    createItem(stage) {
+        // 스테이지별 아이템 생성
+        const index = this.getRandomNumber(0, stage);
         const itemInfo = this.itemImages[index]; // 선택된 아이템 정보
 
         // 아이템의 초기 x, y 좌표 설정 (x는 캔버스 너비의 1.5배 지점에서 시작)
@@ -61,11 +61,11 @@ class ItemController {
         this.items.push(item);
     }
 
-    // 게임 속도와 deltaTime을 받아서 아이템을 업데이트
-    update(gameSpeed, deltaTime) {
+    // 게임 속도와 deltaTime,stage를  받아서 아이템을 업데이트
+    update(gameSpeed, deltaTime, stage) {
         // nextInterval이 0 이하이면 새로운 아이템을 생성하고 다음 생성 시간을 설정
         if (this.nextInterval <= 0) {
-            this.createItem();
+            this.createItem(stage);
             this.setNextItemTime(); // 새로운 아이템 생성 시간을 랜덤하게 설정
         }
 

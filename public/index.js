@@ -213,7 +213,7 @@ function gameLoop(currentTime) {
     // 게임 진행 중일 때 (게임 오버 상태가 아닐 때)
     ground.update(gameSpeed, deltaTime); // 땅 업데이트
     cactiController.update(gameSpeed, deltaTime); // 선인장 업데이트
-    itemController.update(gameSpeed, deltaTime); // 아이템 업데이트
+    itemController.update(gameSpeed, deltaTime, score.stage); // 아이템 업데이트
     player.update(gameSpeed, deltaTime); // 플레이어 업데이트
     updateGameSpeed(deltaTime); // 게임 속도 업데이트
 
