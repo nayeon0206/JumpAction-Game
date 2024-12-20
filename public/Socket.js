@@ -2,7 +2,7 @@ import { CLIENT_VERSION } from './Constants.js';
 
 // 서버에 소켓 연결을 설정하는 부분
 // 'http://localhost:3000' 서버에 연결하고, 클라이언트 버전을 쿼리 매개변수로 전달
-const socket = io('http://localhost:3000', {
+const socket = io('http://3.35.174.130:3000', {
   query: {
     clientVersion: CLIENT_VERSION,  // CLIENT_VERSION은 코드 외부에서 정의된 클라이언트 버전 값
   },
